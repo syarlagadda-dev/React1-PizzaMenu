@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -11,13 +12,29 @@ function App() {
   );
 }
 
-function Pizza({ x }) {
+function Pizza(props) {
   return (
-    <div>
-      <img src={pizzaData[x].photoName} alt={pizzaData[x].name} />
-      <h2>{pizzaData[x].name}</h2>
-      <p>{pizzaData[x].ingredients}</p>
-    </div>
+    <li
+      className="pizza"
+      style={{
+        margin: "10px",
+        padding: "10px",
+        backgroundColor: "#ffcc4bff",
+      }}
+    >
+      <img
+        src={props.pizzaObj.photoName}
+        alt={props.pizzaObj.name}
+        style={{
+          filter: props.pizzaObj.soldOut ? "grayscale(100%)" : "none",
+          opacity: props.pizzaObj.soldOut ? 0.8 : 1,
+        }}
+      />
+      <div className="pizza-info">
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+      </div>
+    </li>
   );
 }
 
@@ -25,8 +42,12 @@ function Header() {
   return (
     <div
       style={{
+        textShadow:
+          "-1px -1px 0 black, 1px -1px 0 black, -1px  1px 0 black, 1px  1px 0 black",
         display: "flex",
         justifyContent: "center",
+        color: "#ff4a4aff",
+        fontSize: "40px",
       }}
     >
       <h1>Fast React Pizza Co.</h1>
@@ -36,19 +57,32 @@ function Header() {
 
 function Menu() {
   return (
-    <div>
-      <h2>Our Menu</h2>
-      <p>
+    <main className="menu">
+      <h1
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          fontSize: "45px",
+        }}
+      >
+        Our Menu
+      </h1>
+      <h2
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          paddingBottom: "10px",
+        }}
+      >
         Authentic Italian cuisine. 6 creative dishes to choose from. All from
         our stone oven, all organic, all delicious.
-      </p>
-      <Pizza x={0} />
-      <Pizza x={1} />
-      <Pizza x={2} />
-      <Pizza x={3} />
-      <Pizza x={4} />
-      <Pizza x={5} />
-    </div>
+      </h2>
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+        ))}
+      </ul>
+    </main>
   );
 }
 
