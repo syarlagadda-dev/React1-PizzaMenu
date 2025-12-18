@@ -67,21 +67,23 @@ function Menu() {
       >
         Our Menu
       </h1>
-      <h2
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          paddingBottom: "10px",
-        }}
-      >
-        Authentic Italian cuisine. 6 creative dishes to choose from. All from
-        our stone oven, all organic, all delicious.
-      </h2>
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} key={pizza.name} />
-        ))}
-      </ul>
+      <>
+        <h2
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            paddingBottom: "10px",
+          }}
+        >
+          Authentic Italian cuisine. 6 creative dishes to choose from. All from
+          our stone oven, all organic, all delicious.
+        </h2>
+        <ul className="pizzas">
+          {pizzaData.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      </>
     </main>
   );
 }
