@@ -8,6 +8,7 @@ function App() {
       <Header />
       <Menu />
       <Footer />
+      <GitHubLink />
     </div>
   );
 }
@@ -107,6 +108,31 @@ function Footer() {
           : "We are closed. Come back later!"}
       </footer>
     </div>
+  );
+}
+
+function GitHubLink() {
+  return (
+    <a
+      href="https://github.com/syarlagadda-dev/React1-PizzaMenu"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ textDecoration: "none" }}
+    >
+      <button
+        style={{
+          backgroundColor: "#000",
+          color: "#fff",
+          padding: "10px 16px",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          fontSize: "14px",
+        }}
+      >
+        View on GitHub
+      </button>
+    </a>
   );
 }
 
